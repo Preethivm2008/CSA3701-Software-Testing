@@ -1,0 +1,27 @@
+menu = {
+    "Pizza": 250,
+    "Burger": 120
+}
+
+def order_food(food):
+    if food not in menu:
+        return "Food Not Available"
+    return "Order Successful"
+
+
+def apply_address(address):
+    if not address:
+        return "Delivery Address Required"
+    return "Address Accepted"
+
+
+def payment(amount):
+    if amount <= 0:
+        return "Invalid Payment"
+    return "Payment Successful"
+
+
+print(order_food("Pasta"))
+print(apply_address(""))
+print(payment(-100))
+print(payment(0))
