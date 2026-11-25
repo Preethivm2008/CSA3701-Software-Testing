@@ -1,0 +1,26 @@
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import java.util.Arrays;
+
+class AnagramTest {
+
+    boolean isAnagram(String s1, String s2) {
+        char[] a = s1.replaceAll("\\s", "")
+                     .toLowerCase().toCharArray();
+
+        char[] b = s2.replaceAll("\\s", "")
+                     .toLowerCase().toCharArray();
+
+        Arrays.sort(a);
+        Arrays.sort(b);
+
+        return Arrays.equals(a, b);
+    }
+
+    @Test
+    void testAnagram() {
+        assertTrue(isAnagram("listen", "silent"));
+        assertTrue(isAnagram("hello", "olleh"));
+        assertFalse(isAnagram("hello", "world"));
+    }
+}
