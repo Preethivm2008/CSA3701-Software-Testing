@@ -1,0 +1,27 @@
+products = {
+    "Laptop": 50000,
+    "Mobile": 20000
+}
+
+def add_to_cart(product):
+    if product not in products:
+        return "Product Not Available"
+    return "Product Added Successfully"
+
+
+def apply_coupon(coupon):
+    if coupon == "SAVE10":
+        return "Coupon Applied"
+    return "Invalid Coupon"
+
+
+def payment(amount):
+    if amount <= 0:
+        return "Invalid Payment Amount"
+    return "Payment Successful"
+
+
+print(add_to_cart("Tablet"))
+print(apply_coupon("INVALID"))
+print(payment(-500))
+print(payment(0))
