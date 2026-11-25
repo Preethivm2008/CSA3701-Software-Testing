@@ -1,0 +1,21 @@
+def login(username, password):
+    if username == "admin" and password == "12345":
+        return "Login Successful"
+    return "Login Failed"
+
+
+def register(name, email, password):
+    if name and "@" in email and len(password) >= 6:
+        return "Registration Successful"
+    return "Registration Failed"
+
+
+def search_student(roll_number):
+    if roll_number == "101":
+        return "Student Found"
+    return "Student Not Found"
+
+
+print(login("admin", "12345"))
+print(register("John", "john@gmail.com", "abc123"))
+print(search_student("101"))
