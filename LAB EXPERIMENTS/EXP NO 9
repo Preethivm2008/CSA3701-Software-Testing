@@ -1,0 +1,32 @@
+balance = 10000
+
+def deposit(amount):
+    global balance
+
+    if amount <= 0:
+        return "Invalid Deposit Amount"
+
+    balance += amount
+    return "Deposit Successful"
+
+
+def withdraw(amount):
+    global balance
+
+    if amount <= 0:
+        return "Invalid Withdrawal Amount"
+
+    if amount > balance:
+        return "Insufficient Balance"
+
+    balance -= amount
+    return "Withdrawal Successful"
+
+
+print(deposit(-500))
+print(deposit(0))
+print(withdraw(-1000))
+print(withdraw(0))
+print(withdraw(15000))
+
+print("Final Balance:", balance)
