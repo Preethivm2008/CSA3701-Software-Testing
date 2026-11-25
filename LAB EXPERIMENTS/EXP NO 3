@@ -1,0 +1,28 @@
+def login(username, password):
+    if not username or not password:
+        return "Username and password required"
+
+    if username == "admin" and password == "12345":
+        return "Login Successful"
+
+    return "Invalid Credentials"
+
+
+def register(name, email, password):
+    if not name:
+        return "Name cannot be empty"
+
+    if "@" not in email:
+        return "Invalid Email"
+
+    if len(password) < 6:
+        return "Password too short"
+
+    return "Registration Successful"
+
+
+print(login("", "12345"))
+print(login("admin", "wrong"))
+print(register("", "abc@gmail.com", "123456"))
+print(register("John", "invalidemail", "123456"))
+print(register("John", "john@gmail.com", "123"))
