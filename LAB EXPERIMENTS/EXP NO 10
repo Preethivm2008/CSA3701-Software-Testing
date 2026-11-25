@@ -1,0 +1,59 @@
+books = {
+    101: "Python Programming",
+    102: "Java Programming",
+    103: "Data Science"
+}
+
+issued_books = []
+
+
+def add_book(book_id, title):
+    if book_id in books:
+        return "Book Already Exists"
+
+    books[book_id] = title
+    return "Book Added Successfully"
+
+
+def search_book(book_id):
+    if book_id in books:
+        return books[book_id]
+
+    return "Book Not Found"
+
+
+def issue_book(book_id):
+    if book_id not in books:
+        return "Book Not Available"
+
+    if book_id in issued_books:
+        return "Book Already Issued"
+
+    issued_books.append(book_id)
+    return "Book Issued Successfully"
+
+
+def return_book(book_id):
+    if book_id in issued_books:
+        issued_books.remove(book_id)
+        return "Book Returned Successfully"
+
+    return "Book Was Not Issued"
+
+
+# Test execution
+
+print("LIBRARY MANAGEMENT SYSTEM")
+print("-" * 40)
+
+print(add_book(104, "Machine Learning"))
+print(search_book(101))
+print(issue_book(102))
+print(issue_book(102))
+print(return_book(102))
+print(return_book(105))
+print(search_book(999))
+
+print("\nAvailable Books:")
+for book_id, title in books.items():
+    print(book_id, ":", title)
