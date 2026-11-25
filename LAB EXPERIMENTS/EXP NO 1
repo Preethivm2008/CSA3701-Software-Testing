@@ -1,0 +1,27 @@
+def withdraw(balance, amount):
+    if amount <= 0:
+        return "Invalid withdrawal amount"
+
+    if amount > balance:
+        return "Insufficient balance"
+
+    if amount % 100 != 0:
+        return "Enter amount in multiples of 100"
+
+    balance -= amount
+    return balance
+
+
+# Test cases
+test_cases = [
+    (5000, 1000),
+    (5000, 6000),
+    (5000, -500),
+    (5000, 550),
+    (5000, 0)
+]
+
+for balance, amount in test_cases:
+    print("Balance:", balance, "Withdrawal:", amount)
+    print("Result:", withdraw(balance, amount))
+    print("-" * 40)
