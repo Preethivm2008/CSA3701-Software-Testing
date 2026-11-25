@@ -1,0 +1,37 @@
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+class RailwayReservationTest {
+
+    String bookTicket(String name, int age, int seats) {
+        if (name != null && !name.isEmpty()
+                && age > 0 && seats > 0) {
+            return "Ticket Booked Successfully";
+        }
+        return "Booking Failed";
+    }
+
+    @Test
+    void testValidPassenger() {
+        assertEquals("Ticket Booked Successfully",
+                bookTicket("John", 25, 2));
+    }
+
+    @Test
+    void testSeniorPassenger() {
+        assertEquals("Ticket Booked Successfully",
+                bookTicket("David", 65, 1));
+    }
+
+    @Test
+    void testSingleTicket() {
+        assertEquals("Ticket Booked Successfully",
+                bookTicket("Mary", 30, 1));
+    }
+
+    @Test
+    void testMultipleTickets() {
+        assertEquals("Ticket Booked Successfully",
+                bookTicket("Peter", 40, 4));
+    }
+}
