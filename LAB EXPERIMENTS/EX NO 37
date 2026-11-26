@@ -1,0 +1,29 @@
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.junit.jupiter.api.Test;
+
+class GoogleSearchTest {
+
+    @Test
+    void googleSearch() {
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("https://www.google.com");
+
+        WebElement search =
+            driver.findElement(By.name("q"));
+
+        search.sendKeys("Java Programming");
+        search.sendKeys(Keys.ENTER);
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        System.out.println("Search Title: " + driver.getTitle());
+
+        driver.quit();
+    }
+}
