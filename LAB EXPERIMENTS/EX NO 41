@@ -1,0 +1,28 @@
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.junit.jupiter.api.Test;
+
+class DropdownTest {
+
+    @Test
+    void dropdownSelection() {
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("http://localhost:8080/form");
+
+        WebElement element =
+            driver.findElement(By.id("course"));
+
+        Select dropdown = new Select(element);
+
+        dropdown.selectByVisibleText("Computer Science");
+
+        System.out.println(
+            "Selected: " +
+            dropdown.getFirstSelectedOption().getText()
+        );
+
+        driver.quit();
+    }
+}
