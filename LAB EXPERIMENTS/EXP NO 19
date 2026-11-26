@@ -1,0 +1,21 @@
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+class CompoundInterestTest {
+
+    double compoundInterest(double p, double r, int t) {
+        return p * Math.pow(1 + r / 100, t) - p;
+    }
+
+    @Test
+    void testInterest() {
+        assertEquals(210.0,
+                compoundInterest(1000, 10, 2), 0.01);
+
+        assertEquals(100.0,
+                compoundInterest(1000, 10, 1), 0.01);
+
+        assertEquals(0.0,
+                compoundInterest(1000, 0, 2), 0.01);
+    }
+}
