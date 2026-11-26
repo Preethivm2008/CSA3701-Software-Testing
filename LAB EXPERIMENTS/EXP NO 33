@@ -1,0 +1,23 @@
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+class VotingTest {
+
+    String checkVoting(int age) {
+        if (age < 0)
+            return "Invalid Age";
+
+        if (age >= 18)
+            return "Eligible for Voting";
+
+        return "Not Eligible for Voting";
+    }
+
+    @Test
+    void testVoting() {
+        assertEquals("Eligible for Voting", checkVoting(20));
+        assertEquals("Eligible for Voting", checkVoting(18));
+        assertEquals("Not Eligible for Voting", checkVoting(17));
+        assertEquals("Invalid Age", checkVoting(-5));
+    }
+}
