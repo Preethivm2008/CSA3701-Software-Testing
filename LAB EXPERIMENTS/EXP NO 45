@@ -1,0 +1,32 @@
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.io.FileHandler;
+import org.junit.jupiter.api.Test;
+import java.io.File;
+
+class ScreenshotTest {
+
+    @Test
+    void takeScreenshot() throws Exception {
+
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("https://www.google.com");
+
+        TakesScreenshot screenshot =
+            (TakesScreenshot) driver;
+
+        File source =
+            screenshot.getScreenshotAs(OutputType.FILE);
+
+        File destination =
+            new File("screenshot.png");
+
+        FileHandler.copy(source, destination);
+
+        System.out.println("Screenshot Saved Successfully");
+
+        driver.quit();
+    }
+}
