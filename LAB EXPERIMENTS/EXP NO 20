@@ -1,0 +1,27 @@
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+class VowelConsonantTest {
+
+    int[] count(String str) {
+        int vowels = 0, consonants = 0;
+
+        for (char ch : str.toLowerCase().toCharArray()) {
+            if (ch >= 'a' && ch <= 'z') {
+                if ("aeiou".indexOf(ch) != -1)
+                    vowels++;
+                else
+                    consonants++;
+            }
+        }
+
+        return new int[]{vowels, consonants};
+    }
+
+    @Test
+    void testCount() {
+        assertArrayEquals(new int[]{2, 3}, count("hello"));
+        assertArrayEquals(new int[]{5, 7}, count("education"));
+        assertArrayEquals(new int[]{0, 0}, count("123"));
+    }
+}
