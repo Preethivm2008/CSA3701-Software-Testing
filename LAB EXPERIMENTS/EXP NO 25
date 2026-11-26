@@ -1,0 +1,27 @@
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+class GradeTest {
+
+    String calculateGrade(int marks) {
+        if (marks < 0 || marks > 100)
+            return "Invalid Marks";
+
+        if (marks >= 90) return "A";
+        if (marks >= 80) return "B";
+        if (marks >= 70) return "C";
+        if (marks >= 60) return "D";
+
+        return "F";
+    }
+
+    @Test
+    void testGrade() {
+        assertEquals("A", calculateGrade(95));
+        assertEquals("B", calculateGrade(85));
+        assertEquals("C", calculateGrade(75));
+        assertEquals("D", calculateGrade(65));
+        assertEquals("F", calculateGrade(40));
+        assertEquals("Invalid Marks", calculateGrade(110));
+    }
+}
