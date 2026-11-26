@@ -1,0 +1,23 @@
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+class LargestArrayTest {
+
+    int largest(int[] arr) {
+        int max = arr[0];
+
+        for (int n : arr) {
+            if (n > max)
+                max = n;
+        }
+
+        return max;
+    }
+
+    @Test
+    void testLargest() {
+        assertEquals(50, largest(new int[]{10, 20, 50, 30}));
+        assertEquals(100, largest(new int[]{100, 20, 30}));
+        assertEquals(-1, largest(new int[]{-5, -1, -10}));
+    }
+}
