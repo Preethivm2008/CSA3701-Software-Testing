@@ -1,0 +1,30 @@
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+class AverageTest {
+
+    double average(int[] arr) {
+        if (arr.length == 0)
+            throw new IllegalArgumentException("Empty array");
+
+        int sum = 0;
+
+        for (int n : arr) {
+            sum += n;
+        }
+
+        return (double) sum / arr.length;
+    }
+
+    @Test
+    void testAverage() {
+        assertEquals(20.0,
+                average(new int[]{10, 20, 30}), 0.01);
+
+        assertEquals(15.0,
+                average(new int[]{10, 20}), 0.01);
+
+        assertEquals(5.0,
+                average(new int[]{5}), 0.01);
+    }
+}
