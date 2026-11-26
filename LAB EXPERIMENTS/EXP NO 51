@@ -1,0 +1,19 @@
+from locust import HttpUser, task, between
+
+class ResultServerUser(HttpUser):
+
+    wait_time = between(1, 2)
+
+    @task
+    def check_result(self):
+        with self.client.get(
+            "/results",
+            name="Result Publishing",
+            catch_response=True
+        ) as response:
+
+            if response.status_code == 200:
+                response.success()
+                print("Result Page Loaded")
+            else:
+                response.failure("Server Failed")
