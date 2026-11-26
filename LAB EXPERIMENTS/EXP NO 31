@@ -1,0 +1,17 @@
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+class ReverseWordTest {
+
+    String reverse(String word) {
+        return new StringBuilder(word).reverse().toString();
+    }
+
+    @Test
+    void testReverse() {
+        assertEquals("olleh", reverse("hello"));
+        assertEquals("avaj", reverse("java"));
+        assertEquals("racecar", reverse("racecar"));
+        assertEquals("", reverse(""));
+    }
+}
