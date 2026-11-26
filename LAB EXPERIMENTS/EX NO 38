@@ -1,0 +1,29 @@
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.junit.jupiter.api.Test;
+
+class RegistrationTest {
+
+    @Test
+    void registration() {
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("http://localhost:8080/register");
+
+        driver.findElement(By.id("name"))
+              .sendKeys("John");
+
+        driver.findElement(By.id("email"))
+              .sendKeys("john@gmail.com");
+
+        driver.findElement(By.id("password"))
+              .sendKeys("John12345");
+
+        driver.findElement(By.id("submit"))
+              .click();
+
+        System.out.println("Registration Form Submitted");
+
+        driver.quit();
+    }
+}
