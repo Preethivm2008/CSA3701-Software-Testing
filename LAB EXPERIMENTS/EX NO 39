@@ -1,0 +1,32 @@
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class ArmsLoginTest {
+
+    @Test
+    void invalidLogin() {
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("http://localhost:8080/arms/login");
+
+        driver.findElement(By.id("username"))
+              .sendKeys("wronguser");
+
+        driver.findElement(By.id("password"))
+              .sendKeys("wrongpassword");
+
+        driver.findElement(By.id("login"))
+              .click();
+
+        WebElement error =
+            driver.findElement(By.id("errorMessage"));
+
+        System.out.println(error.getText());
+
+        assertTrue(error.isDisplayed());
+
+        driver.quit();
+    }
+}
