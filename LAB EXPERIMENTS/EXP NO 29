@@ -1,0 +1,17 @@
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+class TemperatureTest {
+
+    double convert(double celsius) {
+        return (celsius * 9 / 5) + 32;
+    }
+
+    @Test
+    void testTemperature() {
+        assertEquals(32.0, convert(0), 0.01);
+        assertEquals(212.0, convert(100), 0.01);
+        assertEquals(98.6, convert(37), 0.01);
+        assertEquals(-40.0, convert(-40), 0.01);
+    }
+}
