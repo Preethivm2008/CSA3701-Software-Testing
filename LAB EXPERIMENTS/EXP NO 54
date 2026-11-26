@@ -1,0 +1,41 @@
+import requests
+
+session = requests.Session()
+
+base_url = "http://localhost:8080"
+
+# Login
+login_data = {
+    "username": "user1",
+    "password": "user123"
+}
+
+response = session.post(
+    base_url + "/login",
+    data=login_data
+)
+
+print("Login Status:", response.status_code)
+
+# Check cookies
+print("Session Cookies:", session.cookies.get_dict())
+
+# Browse products
+response = session.get(base_url + "/products")
+print("Products Page:", response.status_code)
+
+# Add item to cart
+response = session.post(
+    base_url + "/cart/add",
+    data={"product_id": "101"}
+)
+
+print("Add Cart Status:", response.status_code)
+
+# View cart
+response = session.get(base_url + "/cart")
+print("Cart Status:", response.status_code)
+
+# Logout
+response = session.get(base_url + "/logout")
+print("Logout Status:", response.status_code)
