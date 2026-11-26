@@ -1,0 +1,29 @@
+import csv
+import requests
+
+url = "http://localhost:8080/api/login"
+
+with open("users.csv", "r") as file:
+
+    reader = csv.DictReader(file)
+
+    for row in reader:
+
+        payload = {
+            "username": row["username"],
+            "password": row["password"]
+        }
+
+        response = requests.post(url, json=payload)
+
+        expected = int(row["expected"])
+
+        print("Username:", row["username"])
+        print("Actual Status:", response.status_code)
+
+        if response.status_code == expected:
+            print("TEST PASSED")
+        else:
+            print("TEST FAILED")
+
+        print("-" * 30)
