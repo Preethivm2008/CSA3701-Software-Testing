@@ -1,0 +1,35 @@
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class CheckboxRadioTest {
+
+    @Test
+    void selectOptions() {
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("http://localhost:8080/form");
+
+        WebElement checkbox =
+            driver.findElement(By.id("agree"));
+
+        if (!checkbox.isSelected()) {
+            checkbox.click();
+        }
+
+        WebElement radio =
+            driver.findElement(By.id("male"));
+
+        if (!radio.isSelected()) {
+            radio.click();
+        }
+
+        assertTrue(checkbox.isSelected());
+        assertTrue(radio.isSelected());
+
+        System.out.println("Checkbox and Radio Selected");
+
+        driver.quit();
+    }
+}
