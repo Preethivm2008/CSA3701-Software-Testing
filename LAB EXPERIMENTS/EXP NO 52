@@ -1,0 +1,27 @@
+from locust import HttpUser, task, between
+
+class PaymentUser(HttpUser):
+
+    wait_time = between(1, 2)
+
+    @task
+    def payment(self):
+
+        payload = {
+            "user_id": 101,
+            "amount": 500,
+            "currency": "INR",
+            "transaction_id": "TEST12345"
+        }
+
+        with self.client.post(
+            "/api/payment",
+            json=payload,
+            catch_response=True
+        ) as response:
+
+            if response.status_code in (200, 201):
+                response.success()
+                print("Payment Successful")
+            else:
+                response.failure("Payment Failed")
