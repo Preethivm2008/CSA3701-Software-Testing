@@ -1,0 +1,28 @@
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+class PalindromeTest {
+
+    boolean isPalindrome(int n) {
+        if (n < 0) return false;
+
+        int original = n;
+        int reverse = 0;
+
+        while (n > 0) {
+            reverse = reverse * 10 + n % 10;
+            n /= 10;
+        }
+
+        return original == reverse;
+    }
+
+    @Test
+    void testPalindrome() {
+        assertTrue(isPalindrome(121));
+        assertTrue(isPalindrome(12321));
+        assertFalse(isPalindrome(123));
+        assertFalse(isPalindrome(-121));
+        assertTrue(isPalindrome(0));
+    }
+}
