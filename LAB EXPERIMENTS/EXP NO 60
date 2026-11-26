@@ -1,0 +1,43 @@
+from locust import HttpUser, task, between
+
+class WeatherAPIUser(HttpUser):
+
+    wait_time = between(1, 2)
+
+    @task
+    def weather_service(self):
+
+        with self.client.get(
+            "/api/weather?city=Chennai",
+            catch_response=True
+        ) as response:
+
+            if response.status_code == 200:
+
+                data = response.json()
+
+                if "temperature" in data:
+                    response.success()
+                    print(
+                        "Temperature:",
+                        data["temperature"]
+                    )
+                else:
+                    response.failure("Invalid Weather Data")
+
+            else:
+                response.failure("Weather API Failed")
+
+    @task
+    def forecast_service(self):
+
+        with self.client.get(
+            "/api/forecast?city=Chennai",
+            catch_response=True
+        ) as response:
+
+            if response.status_code == 200:
+                response.success()
+                print("Forecast Retrieved")
+            else:
+                response.failure("Forecast Failed")
