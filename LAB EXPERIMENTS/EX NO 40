@@ -1,0 +1,32 @@
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class LogoutTest {
+
+    @Test
+    void logout() {
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("http://localhost:8080/login");
+
+        driver.findElement(By.id("username"))
+              .sendKeys("admin");
+
+        driver.findElement(By.id("password"))
+              .sendKeys("admin123");
+
+        driver.findElement(By.id("login"))
+              .click();
+
+        driver.findElement(By.id("logout"))
+              .click();
+
+        assertTrue(driver.getCurrentUrl().contains("login"));
+
+        System.out.println("Logout Successful");
+
+        driver.quit();
+    }
+}
