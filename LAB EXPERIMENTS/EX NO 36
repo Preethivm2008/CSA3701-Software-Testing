@@ -1,0 +1,22 @@
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class ArmsTitleTest {
+
+    @Test
+    void verifyTitle() {
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("http://localhost:8080/arms");
+
+        String title = driver.getTitle();
+
+        System.out.println("Page Title: " + title);
+
+        assertTrue(title.toLowerCase().contains("arms"));
+
+        driver.quit();
+    }
+}
